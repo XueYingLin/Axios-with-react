@@ -28,11 +28,17 @@ export default class AddUserFormClassFormat extends React.Component {
             email: this.state.email
         };
 
-        axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
+        axios
+            .post(`https://jsonplaceholder.typicode.com/users`, { user })
             .then(res => {
                 this.props.addNewUser( user );
                 console.log(res);
                 console.log(res.data);
+                this.setState({
+                    name: '',
+                    id: '',
+                    email: ''
+                });
             })
     }
 
@@ -42,15 +48,15 @@ export default class AddUserFormClassFormat extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Person Name:
-                        <input type="text" name="name" onChange={this.handleChangeName} />
+                        <input type="text" name="name" value={this.state.name} onChange={this.handleChangeName} />
                     </label>
                     <label>
                         Id:
-                        <input type="text" name="id" onChange={this.handleChangeId} />
+                        <input type="text" name="id" value={this.state.id} onChange={this.handleChangeId} />
                     </label>
                     <label>
                         Email:
-                        <input type="text" name="email" onChange={this.handleChangeEmail} />
+                        <input type="text" name="email" value={this.state.email} onChange={this.handleChangeEmail} />
                     </label>
                     <button type="submit">Add</button>
                 </form>
