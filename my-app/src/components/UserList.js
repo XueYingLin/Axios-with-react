@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AddPersonForm from './AddPersonForm';
+import AddUserFormClassFormat from './AddUserFormClassFormat';
 
-const PersonList = () => {
+const UserList = () => {
    const [personList, setPersonList] = useState([]);
 
     useEffect(() => {
@@ -14,22 +14,22 @@ const PersonList = () => {
     }, []);
 
     //addPerson function to help the lower level to add new person 
-    const addNewPerson = (person ) => {
+    const addNewUser = (person ) => {
         setPersonList([...personList, person]) 
     }
 
         return (
             <div>
-            <ul>
-                <p>Name  ID  Email</p>
-                {personList.map(person => 
-                 <p>{person.name} {person.id} {person.email}</p> 
-                )}
-            </ul>
-            <AddPersonForm addNewPerson={addNewPerson} />
+                <ul>
+                    <p>Name  ID  Email</p>
+                    {personList.map(person => 
+                    <p>{person.name} {person.id} {person.email}</p> 
+                    )}
+                </ul>
+                <AddUserFormClassFormat addNewUser={addNewUser} />
             </div>
         )
    
 }
 
-export default PersonList;
+export default UserList;

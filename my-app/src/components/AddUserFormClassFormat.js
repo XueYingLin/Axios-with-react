@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 //use the axios .post to add new person to the personList
-export default class AddPersonForm extends React.Component {
+export default class AddUserFormClassFormat extends React.Component {
     state = {
         name: '',
         id: '',
@@ -30,7 +30,7 @@ export default class AddPersonForm extends React.Component {
 
         axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
             .then(res => {
-                this.props.addNewPerson( user );
+                this.props.addNewUser( user );
                 console.log(res);
                 console.log(res.data);
             })
